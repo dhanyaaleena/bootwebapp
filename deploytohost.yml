@@ -14,8 +14,7 @@
 
     - name: Adding context path or app name
       copy: 
-        commad: mv /opt/tomcat/webapps/bootwebapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/bootwebapp.war
-        follow: yes
+        commad: mv /opt/tomcat/webapps/bootwebapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/bootwebapp.war.war
        
     - name: create bootwebapp directory
       file: 
@@ -26,7 +25,7 @@
     - name: Install Unzip
       command: apt install unzip
   
-    - name: Deploying into http://localhost:8080/bootwebapp/welcome
+    - name: Deploying into http://<server-ip>:8080/bootwebapp/
       shell: "unzip /opt/tomcat/webapps/bootwebapp.war -d /opt/tomcat/webapps/bootwebapp"   
        
     - name: Start and enable Tomcat service
