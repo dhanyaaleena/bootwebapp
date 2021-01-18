@@ -8,26 +8,26 @@
     
     - name: Deploying app to Tomcat at http://<server-ip>:8080/
       copy: 
-        src: /var/lib/jenkins/workspace/CICDwithAnsible/target/course-api-0.0.1-SNAPSHOT.jar
+        src: /var/lib/jenkins/workspace/CICDwebapp/target/bootwebapp-0.0.1-SNAPSHOT.war
         dest: /opt/tomcat/webapps/
         follow: yes
 
     - name: Adding context path or app name
       copy: 
-        commad: mv /opt/tomcat/webapps/course-api-0.0.1-SNAPSHOT.jar /opt/tomcat/webapps/course-api.jar
+        commad: mv /opt/tomcat/webapps/bootwebapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/bootwebapp.war
         follow: yes
        
-    - name: create emsapp directory
+    - name: create bootwebapp directory
       file: 
-        path: /opt/tomcat/webapps/course-api
+        path: /opt/tomcat/webapps/bootwebapp
         state: directory
         mode: 0777
       
     - name: Install Unzip
       command: apt install unzip
   
-    - name: Deploying into http://<server-ip>:8080/course-api
-      shell: "unzip /opt/tomcat/webapps/course-api.jar -d /opt/tomcat/webapps/course-api"   
+    - name: Deploying into http://localhost:8080/bootwebapp/welcome
+      shell: "unzip /opt/tomcat/webapps/bootwebapp.war -d /opt/tomcat/webapps/bootwebapp"   
        
     - name: Start and enable Tomcat service
       systemd:
