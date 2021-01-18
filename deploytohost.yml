@@ -13,7 +13,7 @@
         follow: yes
 
     - name: Adding context path or app name 
-      commad: mv /opt/tomcat/webapps/bootwebapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/bootwebapp.war
+      command: mv /opt/tomcat/webapps/bootwebapp-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/bootwebapp.war
        
     - name: create bootwebapp directory
       file: 
